@@ -1,30 +1,37 @@
-// Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBrr_lD4Lf7Pk-MrChtF14EbHK8H7muCqs",
-    authDomain: "i-house-c01f2.firebaseapp.com",
-    databaseURL: "https://i-house-c01f2.firebaseio.com",
-    projectId: "i-house-c01f2",
-    storageBucket: "i-house-c01f2.appspot.com",
-    messagingSenderId: "182315859672"
-  };
-  firebase.initializeApp(config);
-
-var firestore = firebase.firestore();
+// Initialize app
+var myApp = new Framework7();
 
 
-const docRef = firestore.doc("users/username");
-const user = document.querySelector("#user");
-const password = document.querySelector("#password");
-const loginButton = document.querySelector("#login");
+// If we need to use custom DOM library, let's save it to $$ variable:
+var $$ = Dom7;
 
-loginButton.addEventListener("click", function(){
-    const username = user.value;
-    console.log("I am going to save " + username + " to FireStore");
-    docRef.set({
-        user: username
-    }).then(function(){
-            console.log("Saved");
-    }).catch(function (error){
-        console.log("Got an error: ", error);
-    });
-})   
+// Add view
+var mainView = myApp.addView('.view-main', {
+    // Because we want to use dynamic navbar, we need to enable it for this view:
+    dynamicNavbar: true
+});
+
+var mainView = myApp.addView('.view-main', {
+    // Because we want to use dynamic navbar, we need to enable it for this view:
+    dynamicNavbar: true
+});
+
+
+// Handle Cordova Device Ready Event
+$$(document).on('deviceready', function() {
+    console.log("Device is ready!");
+});
+
+
+$$('.open-login').on('click', function () {
+  myApp.loginScreen();
+});
+
+// Now we need to run the code that will be executed only for About page.
+
+
+// Option 1. Using page callback for page (for "about" page in this case) (recommended way):
+myApp.onPageInit('jobApp', function (page) {
+    // Do something here for "about" page
+
+})

@@ -8,13 +8,13 @@
     },
     "installed_plugins": {
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.phonegap.test"
+            "PACKAGE_NAME": "com.phonegap.ihosue"
         },
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.phonegap.test"
+            "PACKAGE_NAME": "com.phonegap.ihosue"
         },
         "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "com.phonegap.test"
+            "PACKAGE_NAME": "com.phonegap.ihosue"
         }
     },
     "dependent_plugins": {}
