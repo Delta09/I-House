@@ -1,6 +1,6 @@
 <!-- We don't need a full layout in this file because this page will be parsed with Ajax. -->
 
-<!-- Pages - Fixed navbar and toolbar throughout all pages in this view stack-->
+<!-- Top Navbar-->
 <div class="pages navbar-through toolbar-through">
     <div class="navbar">
         <div class="navbar-inner">
@@ -10,7 +10,7 @@
                     <span>Back</span>
                 </a>
             </div>
-            <div class="center">GIA Application</div>
+            <div class="center sliding">GIA Application</div>
         </div>
     </div>
 
@@ -20,506 +20,516 @@
     <div class="page" data-page="jobApp">
         <!-- Scrollable page content-->
         <div class="page-content">
-            <!-- List View -->  
-            <div class="content-block-title"><b>GIA Job Descriptions</b></div>
-            <div class="list-block accordion-list inset">
-                <ul>
-                    <li class="accordion-item"><a href="#" class="item-content item-link">
-                        <div class="item-inner">
-                            <div class="item-title" ><b>Office Aide</b></div>
-                        </div></a>
-                        <div class="accordion-item-content">
-                            <div class="content-block">
-                                <p>Qualifications: Flexible availability between 10am and 6pm, Monday through Friday. Previous office experience handling phones, filing, database entry, and/or creative project work preferred, but not required. Friendly and helpful within a diverse cross-cultural environment. Ability to maintain confidentiality and appropriately handle sensitive communications and confidential records. Strong computer skills. Experience using MS Office. Knowledge of PowerPoint, Illustrator, and/or Access desired, but not required. Takes initiative and can work independently. Ability to accurately sort and file documents. Strong oral and written communication skills. Ability to handle multiple projects and prioritize tasks. Please provide a resume/C.V. to the office (if you have one) or a description of relevant experience and skills. Skills assessment also will be held.</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="accordion-item"><a href="#" class="item-content item-link">
-                        <div class="item-inner">
-                            <div class="item-title"><b>Front Desk Receptionist</b></div>
-                        </div></a>
-                        <div class="accordion-item-content">
-                            <div class="content-block">
-                                <p>Responsible for working at the reception desk in the lobby in the evenings from 6 to 11 p.m. Typical duties include (but are not limited to): answering lobby phone and taking messages, answering the door and making sure that guests sign in as they enter, maintaining security, and forwarding mail. Receptionist schedules will vary from week to week. No prior experience is required; however, persons applying must be able to understand and be understood by others who speak English.</p>
-                            </div>
-                        </div>
-                    </li>
-
-                </ul>
-            </div>
-            <div class="list-block inset">
-                <ul>
-                    <!-- Smart select item -->
-                    <li>
-                        <!-- Additional "smart-select" class -->
-                        <a href="#" class="item-link smart-select " data-back-on-select="true" id="#1">
-                            <!-- select -->
-                            <select name="GIASelected">
-                                <option value="NA" >Select</option>
-                                <option value="OA" >Office Aide</option>
-                                <option value="ER">Evening Receptionist</option>
-                            </select>
-                            <div class="item-content">
-                                <div class="item-inner">
-                                    <!-- Select label -->
-                                    <div class="item-title">First Choice Position*</div>
-
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <!-- Another smart selects or list view elements -->
-                    <li>
-                        <!-- Additional "smart-select" class -->
-                        <a href="#" class="item-link smart-select" data-back-on-select="true" id="#1">
-                            <!-- select -->
-                            <select name="GIASelected">
-                                <option value="NA">Select</option>
-                                <option value="OA">Office Aide</option>
-                                <option value="ER">Evening Receptionist</option>
-                                <option value="ER">None</option>
-                            </select>
-                            <div class="item-content">
-                                <div class="item-inner">
-                                    <!-- Select label -->
-                                    <div class="item-title">Second Choice Position</div>
-
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="content-block-title"><b>Skills and Experience</b></div>
+            <form id="my-form"  class="list-block">
+                <!-- List View -->  
 
 
-            <div class="list-block inset">
-                <div class="list-group">
+                <!-- GIA Job Descriptions Section-->
+                <div class="content-block-title"><b>GIA Job Descriptions</b></div>
+                <div class="list-block accordion-list inset">
                     <ul>
-
-                        <li class="item-content">
+                        <li class="accordion-item"><a href="#" class="item-content item-link">
                             <div class="item-inner">
-                            <p>What skills and/or experience do you have that make you a good candidate for each of the positions you listed as first and second?</p>
+                                <div class="item-title" ><b>Office Aide</b></div>
+                            </div></a>
+                            <div class="accordion-item-content">
+                                <div class="content-block">
+                                    <p>Qualifications: Flexible availability between 10am and 6pm, Monday through Friday. Previous office experience handling phones, filing, database entry, and/or creative project work preferred, but not required. Friendly and helpful within a diverse cross-cultural environment. Ability to maintain confidentiality and appropriately handle sensitive communications and confidential records. Strong computer skills. Experience using MS Office. Knowledge of PowerPoint, Illustrator, and/or Access desired, but not required. Takes initiative and can work independently. Ability to accurately sort and file documents. Strong oral and written communication skills. Ability to handle multiple projects and prioritize tasks. Please provide a resume/C.V. to the office (if you have one) or a description of relevant experience and skills. Skills assessment also will be held.</p>
                                 </div>
-                        </li>
-                        <li class="item-content align-top">
-                            <div class="item-input">
-                                <textarea class="resizable" placeholder="Type here"></textarea>
                             </div>
+                        </li>
+                        <li class="accordion-item"><a href="#" class="item-content item-link">
+                            <div class="item-inner">
+                                <div class="item-title"><b>Front Desk Receptionist</b></div>
+                            </div></a>
+                            <div class="accordion-item-content">
+                                <div class="content-block">
+                                    <p>Responsible for working at the reception desk in the lobby in the evenings from 6 to 11 p.m. Typical duties include (but are not limited to): answering lobby phone and taking messages, answering the door and making sure that guests sign in as they enter, maintaining security, and forwarding mail. Receptionist schedules will vary from week to week. No prior experience is required; however, persons applying must be able to understand and be understood by others who speak English.</p>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <!-- GIA job Selction Section-->
+                <div class="list-block inset">
+                    <ul>
+                        <!-- Smart select item -->
+                        <li>
+                            <!-- Additional "smart-select" class -->
+                            <a href="#" class="item-link smart-select " data-back-on-select="true" id="#1">
+                                <!-- select -->
+                                <select name="GIASelected1">
+                                    <option name="NA" >Select</option>
+                                    <option value="OA" >Office Aide</option>
+                                    <option value="ER">Evening Receptionist</option>
+                                </select>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <!-- Select label -->
+                                        <div class="item-title">First Choice Position*</div>
+
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- Another smart selects or list view elements -->
+                        <li>
+                            <!-- Additional "smart-select" class -->
+                            <a href="#" class="item-link smart-select" data-back-on-select="true" id="#1">
+                                <!-- select -->
+                                <select name="GIASelected2">
+                                    <option value="NA">Select</option>
+                                    <option value="OA">Office Aide</option>
+                                    <option value="ER">Evening Receptionist</option>
+                                </select>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <!-- Select label -->
+                                        <div class="item-title">Second Choice Position</div>
+
+                                    </div>
+                                </div>
+                            </a>
                         </li>
                     </ul>
                 </div>
-            </div>
-            
-            <div class="content-block-title"><b>Resum/CV</b>
-            <a class="button file-button"><input type="file"></a>
-            </div>
-            
 
 
-            <div class="content-block-title">Availability</div>
-            <div class="list-block inset">
+                <!-- Skills and Experience Section-->
+                <div class="content-block-title"><b>Skills and Experience</b></div>
+                <div class="list-block inset">
+                    <div class="list-group">
+                        <ul>
 
-                <div>
-                    <div class="content-block-title">Monday</div>
-                    <div class="list-block">
-                        <ul>
-                            <!-- Single chekbox item -->
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">10:00 AM - 12:00 PM</div>
-                                    </div>
-                                </label>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <p>What skills and/or experience do you have that make you a good candidate for each of the positions you listed as first and second?</p>
+                                </div>
                             </li>
-                            <!-- Another chekbox item -->
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">12:00 PM - 2:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">2:00 PM - 4:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">4:00 PM - 6:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">6:00 PM - 11:00 PM</div>
-                                    </div>
-                                </label>
+                            <li class="item-content align-top">
+                                <div class="item-input" >
+                                    <textarea class="resizable" placeholder="Type here" name="skills"></textarea>
+                                </div>
                             </li>
                         </ul>
-                    </div> 
-                </div>
-                <div>
-                    <div class="content-block-title">Tuesday</div>
-                    <div class="list-block">
-                        <ul>
-                            <!-- Single chekbox item -->
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">10:00 AM - 12:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <!-- Another chekbox item -->
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">12:00 PM - 2:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">2:00 PM - 4:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">4:00 PM - 6:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">6:00 PM - 11:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                        </ul>
-                    </div> 
-                </div>
-                <div>
-                    <div class="content-block-title">Wednesday</div>
-                    <div class="list-block">
-                        <ul>
-                            <!-- Single chekbox item -->
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">10:00 AM - 12:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <!-- Another chekbox item -->
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">12:00 PM - 2:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">2:00 PM - 4:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">4:00 PM - 6:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">6:00 PM - 11:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                        </ul>
-                    </div> 
-                </div>
-                <div>
-                    <div class="content-block-title">Thursday</div>
-                    <div class="list-block">
-                        <ul>
-                            <!-- Single chekbox item -->
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">10:00 AM - 12:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <!-- Another chekbox item -->
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">12:00 PM - 2:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">2:00 PM - 4:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">4:00 PM - 6:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">6:00 PM - 11:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                        </ul>
-                    </div> 
-                </div>
-                <div>
-                    <div class="content-block-title">Friday</div>
-                    <div class="list-block">
-                        <ul>
-                            <!-- Single chekbox item -->
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">10:00 AM - 12:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <!-- Another chekbox item -->
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">12:00 PM - 2:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">2:00 PM - 4:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">4:00 PM - 6:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">6:00 PM - 11:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                        </ul>
-                    </div> 
-                </div>
-                <div>
-                    <div class="content-block-title">Saturday</div>
-                    <div class="list-block">
-                        <ul>
-                            <!-- Single chekbox item -->
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">6:00 PM - 11:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                        </ul>
-                    </div> 
-                </div>
-                <div>
-                    <div class="content-block-title">Sunday</div>
-                    <div class="list-block">
-                        <ul>
-                            <!-- Single chekbox item -->
-                            <li>
-                                <label class="label-checkbox item-content">
-                                    <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
-                                    <div class="item-media">
-                                        <i class="icon icon-form-checkbox"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">6:00 PM - 11:00 PM</div>
-                                    </div>
-                                </label>
-                            </li>
-                        </ul>
-                    </div> 
+                    </div>
                 </div>
 
-                <div class="content-block">
-                    <div class="row">
-                        <div class="col-100">
-                            <input id="submit" type="button" value="Submit" class="button button-big button-fill color-green"/>
+                <!-- Resume/CV Submission Section-->
+                <div class="content-block-title"><b>Resum/CV</b>
+                    <a class="button file-button"><input type="file"></a>
+                </div>
+
+
+                <!-- Availability Timing Section-->
+                <div class="content-block-title">Availability</div>
+                <div class="list-block inset">
+
+                    <div>
+                        <div class="content-block-title" name="Monday">Monday</div>
+                        <div class="list-block">
+                            <ul>
+                                <!-- Single chekbox item -->
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="M" value="10-12">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">10:00 AM - 12:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <!-- Another chekbox item -->
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="M" value="12-2" >
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">12:00 PM - 2:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="M" value="2-4">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">2:00 PM - 4:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="M" value="4-6" >
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">4:00 PM - 6:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="M" value="6-11">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">6:00 PM - 11:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div> 
+                    </div>
+
+                    <div>
+                        <div class="content-block-title">Tuesday</div>
+                        <div class="list-block">
+                            <ul>
+                                <!-- Single chekbox item -->
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="T" value="10-12">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">10:00 AM - 12:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <!-- Another chekbox item -->
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="T" value="12-2" >
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">12:00 PM - 2:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="T" value="2-4">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">2:00 PM - 4:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="T" value="4-6" >
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">4:00 PM - 6:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="T" value="6-11">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">6:00 PM - 11:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div> 
+                    </div>
+
+                    <div>
+                        <div class="content-block-title">Wednesday</div>
+                        <div class="list-block">
+                            <ul>
+                                <!-- Single chekbox item -->
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="W" value="10-12">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">10:00 AM - 12:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <!-- Another chekbox item -->
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="W" value="12-2" >
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">12:00 PM - 2:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="W" value="2-4">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">2:00 PM - 4:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="W" value="4-6" >
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">4:00 PM - 6:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="W" value="6-11">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">6:00 PM - 11:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div> 
+                    </div>
+
+                    <div>
+                        <div class="content-block-title">Thursday</div>
+                        <div class="list-block">
+                            <ul>
+                                <!-- Single chekbox item -->
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="Th" value="10-12">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">10:00 AM - 12:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <!-- Another chekbox item -->
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="Th" value="12-2" >
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">12:00 PM - 2:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="Th" value="2-4">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">2:00 PM - 4:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="Th" value="4-6" >
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">4:00 PM - 6:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="Th" value="6-11">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">6:00 PM - 11:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div> 
+                    </div>
+
+                    <div>
+                        <div class="content-block-title">Friday</div>
+                        <div class="list-block">
+                            <ul>
+                                <!-- Single chekbox item -->
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="F" value="10-12">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">10:00 AM - 12:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <!-- Another chekbox item -->
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="F" value="12-2" >
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">12:00 PM - 2:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="F" value="2-4">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">2:00 PM - 4:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="F" value="4-6" >
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">4:00 PM - 6:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="F" value="6-11">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">6:00 PM - 11:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div> 
+                    </div>
+
+                    <div>
+                        <div class="content-block-title">Saturday</div>
+                        <div class="list-block">
+                            <ul>
+                                <!-- Single chekbox item -->
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="S" value="6-11">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">6:00 PM - 11:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div> 
+                    </div>
+
+                    <div>
+                        <div class="content-block-title">Sunday</div>
+                        <div class="list-block">
+                            <ul>
+                                <!-- Single chekbox item -->
+                                <li>
+                                    <label class="label-checkbox item-content">
+                                        <!-- Checked by default -->
+                                        <input type="checkbox" name="Su" value="6-11">
+                                        <div class="item-media">
+                                            <i class="icon icon-form-checkbox"></i>
+                                        </div>
+                                        <div class="item-inner">
+                                            <div class="item-title">6:00 PM - 11:00 PM</div>
+                                        </div>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div> 
+                    </div>
+
+                    <!-- Submission Button Section-->
+                    <div class="content-block">
+                        <div class="row">
+                            <div class="col-100">
+                                <a id="submitButton" class="button button-big button-fill color-green form-to-data">Submit</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-
+    
 </div>
-
-<style>
-    .size-15 { font-size: 15px }
-</style>

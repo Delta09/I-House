@@ -3,15 +3,16 @@ var myApp = new Framework7();
 
 
 // Initialize Firebase
-  var config = {
+var config = {
     apiKey: "AIzaSyBrr_lD4Lf7Pk-MrChtF14EbHK8H7muCqs",
     authDomain: "i-house-c01f2.firebaseapp.com",
     databaseURL: "https://i-house-c01f2.firebaseio.com",
     projectId: "i-house-c01f2",
     storageBucket: "i-house-c01f2.appspot.com",
     messagingSenderId: "182315859672"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
+var firestore = firebase.firestore();
 
 // If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
@@ -30,51 +31,69 @@ $$(document).on('deviceready', function() {
 
 
 $$('.open-login').on('click', function () {
-  myApp.loginScreen();
+    myApp.loginScreen();
 });
 
 // Now we need to run the code that will be executed only for jobApp page.
 myApp.onPageInit('jobApp', function (page) {
     // Do something here for "jobApp" page
     console.log("jobApp");
+
+    //Stores the Data to Firebase
+    const docRef = firestore.doc("users/test/data/application");
+    const submit = document.querySelector("#submitButton");
+
+    $$('.form-to-data').on('click', function(){
+        var formData = myApp.formToJSON('#my-form'); //turns all the eform fields into JSON
+        alert(JSON.stringify(formData));
+        myApp.alert('Thank you for submitting your GIA Application!', 'I-House') 
+
+        console.log("Saving: " + formData);
+        docRef.set({
+            application: formData
+        })
+        
+        
+    }); 
 });
 
 // Now we need to run the code that will be executed only for schedule page.
 myApp.onPageInit('schedule', function (page) {
     // Do something here for "schedule" page
     console.log("schedule");
-    
+
+    //This is all for the Calendar Page, it is on the Framework7 website
     var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August' , 'September' , 'October', 'November', 'December'];
- 
-var calendarInline = myApp.calendar({
-    container: '#calendar-inline-container',
-    value: [new Date()],
-    weekHeader: false,
-    toolbarTemplate: 
+
+    var calendarInline = myApp.calendar({
+        container: '#calendar-inline-container',
+        value: [new Date()],
+        weekHeader: false,
+        toolbarTemplate: 
         '<div class="toolbar calendar-custom-toolbar">' +
-            '<div class="toolbar-inner">' +
-                '<div class="left">' +
-                    '<a href="#" class="link icon-only"><i class="icon icon-back"></i></a>' +
-                '</div>' +
-                '<div class="center"></div>' +
-                '<div class="right">' +
-                    '<a href="#" class="link icon-only"><i class="icon icon-forward"></i></a>' +
-                '</div>' +
-            '</div>' +
+        '<div class="toolbar-inner">' +
+        '<div class="left">' +
+        '<a href="#" class="link icon-only"><i class="icon icon-back"></i></a>' +
+        '</div>' +
+        '<div class="center"></div>' +
+        '<div class="right">' +
+        '<a href="#" class="link icon-only"><i class="icon icon-forward"></i></a>' +
+        '</div>' +
+        '</div>' +
         '</div>',
-    onOpen: function (p) {
-        $$('.calendar-custom-toolbar .center').text(monthNames[p.currentMonth] +', ' + p.currentYear);
-        $$('.calendar-custom-toolbar .left .link').on('click', function () {
-            calendarInline.prevMonth();
-        });
-        $$('.calendar-custom-toolbar .right .link').on('click', function () {
-            calendarInline.nextMonth();
-        });
-    },
-    onMonthYearChangeStart: function (p) {
-        $$('.calendar-custom-toolbar .center').text(monthNames[p.currentMonth] +', ' + p.currentYear);
-    }
-});
-    
-    
+        onOpen: function (p) {
+            $$('.calendar-custom-toolbar .center').text(monthNames[p.currentMonth] +', ' + p.currentYear);
+            $$('.calendar-custom-toolbar .left .link').on('click', function () {
+                calendarInline.prevMonth();
+            });
+            $$('.calendar-custom-toolbar .right .link').on('click', function () {
+                calendarInline.nextMonth();
+            });
+        },
+        onMonthYearChangeStart: function (p) {
+            $$('.calendar-custom-toolbar .center').text(monthNames[p.currentMonth] +', ' + p.currentYear);
+        }
+    });
+
+
 });

@@ -46,12 +46,15 @@ http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-theme
                     </div>
                 </div>
                 <!-- /End of Top Navbar-->    
+
+                <!-- Tab content is shown here-->
                 <div class="pages navbar-through toolbar-through">
                     <div data-page="index" class="page">
                         <div class="page-content">
                             <div class = "views tabs toolbar-fixed">     
-                                <div id = "tab1" class = "view tab active">
 
+                                <!-- Home Tab content-->
+                                <div id = "tab1" class = "view tab active">
                                     <div data-page = "home-1" class = "page">
                                         <div class = "page-content">
                                             <div class = "content-block">
@@ -69,12 +72,11 @@ http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-theme
                                                     </div>
                                                 </div>
                                             </div>
-
-
-
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- Messages Tab content-->
                                 <div id = "tab2" class = "view tab">
                                     <div data-page = "home-2" class = "page">
                                         <div class = "page-content">
@@ -84,6 +86,8 @@ http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-theme
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- Settings Tab content-->
                                 <div id = "tab3" class = "view tab">
                                     <div data-page = "home-3" class = "page">
                                         <div class = "page-content">
@@ -109,18 +113,21 @@ http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-theme
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Bottom Toolbar-->
                 <div class="toolbar tabbar tabbar-labels">
                     <div class="toolbar-inner">
+
                         <a href="#tab1" class="tab-link active link">
                             <i class="f7-icons">home</i>
                             <span class="tabbar-label">Home</span>
                         </a>
+
                         <a href="#tab2" class="tab-link">
                             <i class="icon demo-icon-2">
                                 <i class="f7-icons">compose</i>
@@ -128,20 +135,29 @@ http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-theme
                             </i>
                             <span class="tabbar-label">Messages</span>
                         </a>
+
                         <a href="#tab3" class="tab-link">
                             <i class="f7-icons">person</i>
                             <span class="tabbar-label">Profile</span>
                         </a>
                     </div>
                 </div>
-
                 <!-- /End of Bottom Toolbar-->
+
             </div>
         </div>
 
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
-    <script type="text/javascript" src="js/my-app.js"></script>
+        <!-- All of the Firebase Scripts we may or may not need-->
+        <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-messaging.js"></script>
+
+        <!-- Scripts for PhoneGap and Framework7-->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+        <script type="text/javascript" src="js/my-app.js"></script>
     </body>
 
 </html>

@@ -20,6 +20,7 @@
     <div class="page" data-page="jobApp">
         <!-- Scrollable page content-->
         <div class="page-content">
+            <form id="my-form"  class="list-block">
             <!-- List View -->  
             <div class="content-block-title"><b>GIA Job Descriptions</b></div>
             <div class="list-block accordion-list inset">
@@ -54,8 +55,8 @@
                         <!-- Additional "smart-select" class -->
                         <a href="#" class="item-link smart-select " data-back-on-select="true" id="#1">
                             <!-- select -->
-                            <select name="GIASelected">
-                                <option value="NA" >Select</option>
+                            <select name="GIASelected1">
+                                <option name="NA" >Select</option>
                                 <option value="OA" >Office Aide</option>
                                 <option value="ER">Evening Receptionist</option>
                             </select>
@@ -73,11 +74,10 @@
                         <!-- Additional "smart-select" class -->
                         <a href="#" class="item-link smart-select" data-back-on-select="true" id="#1">
                             <!-- select -->
-                            <select name="GIASelected">
+                            <select name="GIASelected2">
                                 <option value="NA">Select</option>
                                 <option value="OA">Office Aide</option>
                                 <option value="ER">Evening Receptionist</option>
-                                <option value="ER">None</option>
                             </select>
                             <div class="item-content">
                                 <div class="item-inner">
@@ -104,8 +104,8 @@
                                 </div>
                         </li>
                         <li class="item-content align-top">
-                            <div class="item-input">
-                                <textarea class="resizable" placeholder="Type here"></textarea>
+                            <div class="item-input" >
+                                <textarea class="resizable" placeholder="Type here" name="skills"></textarea>
                             </div>
                         </li>
                     </ul>
@@ -122,14 +122,14 @@
             <div class="list-block inset">
 
                 <div>
-                    <div class="content-block-title">Monday</div>
+                    <div class="content-block-title" name="Monday">Monday</div>
                     <div class="list-block">
                         <ul>
                             <!-- Single chekbox item -->
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
+                                    <input type="checkbox" name="M" value="10-12">
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -142,7 +142,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
+                                    <input type="checkbox" name="M" value="12-2" >
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -154,7 +154,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
+                                    <input type="checkbox" name="M" value="2-4">
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -166,7 +166,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
+                                    <input type="checkbox" name="M" value="4-6" >
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -178,7 +178,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
+                                    <input type="checkbox" name="M" value="6-11">
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -198,7 +198,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
+                                    <input type="checkbox" name="T" value="10-12">
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -211,7 +211,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
+                                    <input type="checkbox" name="T" value="12-2" >
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -223,7 +223,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
+                                    <input type="checkbox" name="T" value="2-4">
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -235,7 +235,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
+                                    <input type="checkbox" name="T" value="4-6" >
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -247,7 +247,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
+                                    <input type="checkbox" name="T" value="6-11">
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -267,7 +267,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
+                                    <input type="checkbox" name="W" value="10-12">
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -280,7 +280,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
+                                    <input type="checkbox" name="W" value="12-2" >
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -292,7 +292,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
+                                    <input type="checkbox" name="W" value="2-4">
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -304,7 +304,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
+                                    <input type="checkbox" name="W" value="4-6" >
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -316,7 +316,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
+                                    <input type="checkbox" name="W" value="6-11">
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -336,7 +336,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
+                                    <input type="checkbox" name="Th" value="10-12">
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -349,7 +349,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
+                                    <input type="checkbox" name="Th" value="12-2" >
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -361,7 +361,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
+                                    <input type="checkbox" name="Th" value="2-4">
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -373,7 +373,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
+                                    <input type="checkbox" name="Th" value="4-6" >
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -385,7 +385,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
+                                    <input type="checkbox" name="Th" value="6-11">
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -405,7 +405,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
+                                    <input type="checkbox" name="F" value="10-12">
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -418,7 +418,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
+                                    <input type="checkbox" name="F" value="12-2" >
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -430,7 +430,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
+                                    <input type="checkbox" name="F" value="2-4">
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -442,7 +442,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books" >
+                                    <input type="checkbox" name="F" value="4-6" >
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -454,7 +454,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
+                                    <input type="checkbox" name="F" value="6-11">
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -474,7 +474,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
+                                    <input type="checkbox" name="S" value="6-11">
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -494,7 +494,7 @@
                             <li>
                                 <label class="label-checkbox item-content">
                                     <!-- Checked by default -->
-                                    <input type="checkbox" name="my-checkbox" value="Books">
+                                    <input type="checkbox" name="Su" value="6-11">
                                     <div class="item-media">
                                         <i class="icon icon-form-checkbox"></i>
                                     </div>
@@ -510,11 +510,12 @@
                 <div class="content-block">
                     <div class="row">
                         <div class="col-100">
-                            <input id="submit" type="button" value="Submit" class="button button-big button-fill color-green"/>
+                            <a id="submitButton" class="button button-big button-fill color-green form-to-data">Submit</a>
                         </div>
                     </div>
                 </div>
             </div>
+                </form>
         </div>
     </div>
 
