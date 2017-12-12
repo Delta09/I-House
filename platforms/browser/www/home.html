@@ -66,6 +66,9 @@ http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-theme
                                                         <p >
                                                             <a href="jobApp.html" class="button button-big button-fill color-lightblue" >GIA Application</a>
                                                         </p>
+                                                        <p >
+                                                            <a id="admin" href="addResident.html" class="button button-big button-fill color-lightblue" style="display: none;">Add Resident</a>
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -86,10 +89,13 @@ http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-theme
 
                                 <!-- Settings Tab content-->
                                 <div id = "tab3" class = "view tab">
+                                    <div id="pic"></div>
                                     <div data-page = "home-3" class = "page">
+                                        
                                         <div class = "page-content">
+                                        
                                             <div class="content-block">
-                                                <div id="pic"></div>
+                                                
                                                 <p id="name">Name</p>
                                                 <p>GIA</p>
                                             </div>
@@ -145,6 +151,7 @@ http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-theme
         </div>
 
         <!-- All of the Firebase Scripts we may or may not need-->
+        <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-database.js"></script>
@@ -154,8 +161,7 @@ http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-theme
         <!-- Scripts for PhoneGap and Framework7-->
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
-        <script type="text/javascript" src="js/my-app.js"></script>
-        <script type="text/javascript" src="js/profile.js"></script>
+        <script type="text/javascript" src="js/home.js"></script>
     </body>
 
 </html>
