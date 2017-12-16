@@ -36,7 +36,6 @@ $$(document).on('deviceready', function() {
 
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(function(firebaseUser){
-            console.log("No issue");
             location.href = "home.html";
         })
             .catch(function(error) {

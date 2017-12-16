@@ -32,6 +32,8 @@ firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
 
 // If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
+var passed_id = 0;
+var passed_name = "";
 
 // Add view
 myApp.addView('.view-main',{
@@ -52,6 +54,85 @@ firebase.auth().onAuthStateChanged(function(user) {
         var providerData = user.providerData;
         var admin = user.admin;
         console.log('User name: ' + displayName)
+        
+        // Handle Cordova Device Ready Event
+$$(document).on('deviceready', function() {
+    console.log("Home is ready!"); 
+    var user = firebase.auth().currentUser;
+
+    if(user){
+        console.log("user is logged in")
+
+        //update Profile page
+        document.getElementById("name").innerHTML = user.displayName;
+        var img = document.createElement("img");
+        //img.src = user.photoURL;
+        //img.height = 250;
+        //img.width = 250;
+        //document.getElementById('pic').appendChild(img);
+    }
+    else{
+        console.log("NO user is logged in")
+    }
+
+
+    var id = user.uid
+    var docRef = db.collection("users").doc(id);
+
+    //Checks user
+    docRef.get().then(function(doc) {
+        if (doc.exists) {
+            if(doc.data()["admin"]){
+                console.log("Admin Signed in")  
+                document.getElementById('admin').style.display = 'block';
+            }
+            else{
+                console.log("Resident Signed in")
+                var docRef = db.collection("settings").doc("GIA_Application");
+
+                docRef.get().then(function(doc) {
+                    if (doc.exists) {
+                        console.log("Document data:", doc.data());
+                        if(!doc.data()["GIA_Button"]){
+                            console.log("GIA Button Disabled")
+                            document.getElementById('GIA_App').style.display = 'none';
+                        }
+                        console.log("GIA Button Enabled")
+                    } else {
+                        console.log("No such document!");
+                    }
+                }).catch(function(error) {
+                    console.log("Error getting GIA_Application:", error);
+                });
+            }
+
+
+        } else {
+            console.log("No such user exists");
+        }
+    }).catch(function(error) {
+        console.log("Error getting users:", error);
+    });
+
+
+
+
+    $$('.sign-out').on('click', function(){
+        console.log('Signing Out');
+        firebase.auth().signOut()
+            .then(function() {
+            console.log('Signed-Out');
+            location.href = "index.html";
+        })
+            .catch(function(error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log('Sign-Out error: ', errorCode);
+        });
+
+    });
+
+});
 
     } else {
         console.log('No User Signed in'); // No user is signed in.
@@ -61,129 +142,192 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
 
-// Handle Cordova Device Ready Event
-$$(document).on('deviceready', function() {
-    console.log("Home is ready!"); 
-    var user = firebase.auth().currentUser;
 
-    var id = user.uid
-    const docRef = db.collection("users").doc(id);
-
-     docRef.get().then(function(doc) {
-        if (doc.exists) {
-
-
-            if(doc.data()["admin"]){
-                console.log("Admin Signed in")
-                document.getElementById('admin').style.display = 'block';
-            }
-            else{
-                console.log("Resident Signed in")
-            }
-
-
-        } else {
-            console.log("No such document!");
-        }
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
-    });
-
-
-
-
-if(user){
-    console.log("user is logged in")
-
-    //update Profile page
-    document.getElementById("name").innerHTML = user.displayName;
-    var img = document.createElement("img");
-    img.src = user.photoURL;
-    img.height = 250;
-    img.width = 250;
-    document.getElementById('pic').appendChild(img);
-}
-
-
-$$('.sign-out').on('click', function(){
-    console.log('Signing Out');
-    firebase.auth().signOut()
-        .then(function() {
-        console.log('Signed-Out');
-        location.href = "index.html";
-    })
-        .catch(function(error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log('Sign-Out error: ', errorCode);
-    });
-
-});
-
-});
 
 // Now we need to run the code that will be executed only for jobApp page.
-myApp.onPageInit('jobApp', function (page) {
+myApp.onPageBeforeInit('jobApp', function (page) {
     // Do something here for "jobApp" page
     console.log("jobApp");
     var user = firebase.auth().currentUser;
 
 
     var id = user.uid
-    const docRef = db.collection("users").doc(id);
+    var docRef = db.collection("users").doc(id);
 
     docRef.get().then(function(doc) {
         if (doc.exists) {
 
-
-            if(doc.data()["admin"]){
+            //load data relevant to Admin
+            if(doc.data()["admin"]){ 
                 console.log("Admin Signed in")
                 document.getElementById('applications').style.display = 'inline';
-
+                var counter = 0
+                //See who submitted an application
                 db.collection("GIA_Applications").get()
                     .then(function(querySnapshot) {
                     querySnapshot.forEach(function(doc) {
-                        console.log(doc.id, " => ", doc.data());
+                        //console.log("Getting application of: " + doc.id);
+                        //console.log(counter);
+
+                        var docRef = db.collection("users").doc(doc.id);
+                        var id = doc.id;
+
+                        //Trying to get the user's name
+                        docRef.get().then(function(doc) {
+                            if (doc.exists) {
+                                var name_user = doc.data()["name"];
+                                // Adding new name to application list
+                                var a = document.createElement("a");
+                                var list = document.createElement("li");
+                                var i = document.createElement("i")
+                                var div = document.createElement("div");
+                                var div2 = document.createElement("div");
+                                var div3 = document.createElement("div");
+
+
+
+
+
+
+                                docRef = db.collection("GIA_Applications").doc(doc.id);
+                                var element="";
+                                docRef.get().then(function(doc) {
+
+                                    if(doc.data()["accepted"]){
+                                        console.log("applicant has beeen accepted")
+                                        element = document.getElementById("accepted");
+
+                                    }
+                                    else{
+                                        element = document.getElementById("waiting");
+                                        a.href="application.html";
+
+                                        i.className ="icon icon-forward";
+                                    }
+
+                                    a.className="Resident-Application";
+
+                                    a.id=id;
+                                    a.onclick=function() {
+                                        console.log("Sending id: " +this.id)
+                                        console.log("Sending Name: " +name_user)
+                                        passed_id=this.id
+                                        passed_name=name_user;
+                                    };
+
+
+                                    list.className ="item-content";
+                                    div.className ="item-inner";
+                                    div2.className ="item-title";
+                                    div3.className = "item-after";
+
+                                    var node = document.createTextNode(name_user);
+                                    div3.appendChild(i)
+                                    div2.appendChild(node);
+                                    div.appendChild(div2);
+                                    div.appendChild(div3)
+                                    list.appendChild(div)
+                                    a.append(list)
+
+                                    element.appendChild(a);
+                                }).catch(function(error) {
+                                    console.log("Error getting document:", error);
+                                });
+
+
+
+
+
+
+
+
+
+                            } else {
+                                console.log("No such user: " + doc.id);
+                            }
+                        }).catch(function(error) {
+                            console.log("Error getting Users who submitted applications:", error);
+                        });
+
+                        counter = ++counter;
                     });
                 })
                     .catch(function(error) {
                     console.log("Error getting documents: ", error);
                 });
 
+                $$('.start-button').on('click', function(){
+                    myApp.alert('Application period started!', 'I-House')
+                    db.collection("settings").doc("GIA_Application").set({
+                        GIA_Button: true
+                    }).then(function() {
+                        console.log("GIA period successfully started");
+                        document.getElementById('status').innerHTML="<b>Open</b>";})
+                });
 
+                $$('.end-button').on('click', function(){
+                    myApp.alert('Application period ended!', 'I-House') 
+                    db.collection("settings").doc("GIA_Application").set({
+                        GIA_Button: false
+                    }).then(function() {
+                        console.log("GIA period successfully ended");
+                        document.getElementById('status').innerHTML="<b>Closed</b>";})
+                });
+
+                var docRef = db.collection("settings").doc("GIA_Application");
+
+                docRef.get().then(function(doc) {
+                    if (doc.exists) {
+                        //console.log("Document data:", doc.data());
+                        if(doc.data()["GIA_Button"]){
+                            document.getElementById('status').innerHTML="<b>Open</b>";
+                        }
+                        else{
+                            document.getElementById('status').innerHTML="<b>Closed</b>";
+                        }
+
+                    } else {
+                        console.log("No such document!");
+                    }
+                }).catch(function(error) {
+                    console.log("Error getting GIA_Application:", error);
+                })
+
+
+                var ptrContent = $$('.pull-to-refresh-content');
 
 
 
             }
+
+            //load data relevant to Resident
             else{
                 console.log("Resident Signed in")
 
                 document.getElementById('my-form').style.display = 'inline';
 
                 //Stores the Data to Firebase
-
-                $$('.form-to-data').on('click', function(){
-                    var formData = myApp.formToJSON('#my-form'); //turns all the eform fields into JSON
-                    alert(JSON.stringify(formData));
-                    myApp.alert('Thank you for submitting your GIA Application!', 'I-House') 
-
+                $$('#submitButton').on('click', function(){
+                    var formData = myApp.formToJSON('#my-form'); //turns all the form fields into JSON
+                    formData.accepted = false;
                     console.log("Saving: " + formData);
                     console.log("UID: " + id);
                     db.collection("GIA_Applications").doc(id).set(formData).then(function() {
                         console.log("Document successfully written");
+                        window.location="home.html";
                     });
-
                 });
 
             }
 
-
-        } else {
-            console.log("No such document!");
         }
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
+        else {
+            console.log("No such document!");
+        }}).catch(function(error) {
+        console.log("Error getting users for admin check:", error);
     });
+
+
 
 
 });
@@ -193,38 +337,124 @@ myApp.onPageInit('schedule', function (page) {
     // Do something here for "schedule" page
     console.log("schedule");
 
-    //This is all for the Calendar Page, it is on the Framework7 website
-    var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August' , 'September' , 'October', 'November', 'December'];
 
-    var calendarInline = myApp.calendar({
-        container: '#calendar-inline-container',
-        value: [new Date()],
-        weekHeader: false,
-        toolbarTemplate: 
-        '<div class="toolbar calendar-custom-toolbar">' +
-        '<div class="toolbar-inner">' +
-        '<div class="left">' +
-        '<a href="#" class="link icon-only"><i class="icon icon-back"></i></a>' +
-        '</div>' +
-        '<div class="center"></div>' +
-        '<div class="right">' +
-        '<a href="#" class="link icon-only"><i class="icon icon-forward"></i></a>' +
-        '</div>' +
-        '</div>' +
-        '</div>',
-        onOpen: function (p) {
-            $$('.calendar-custom-toolbar .center').text(monthNames[p.currentMonth] +', ' + p.currentYear);
-            $$('.calendar-custom-toolbar .left .link').on('click', function () {
-                calendarInline.prevMonth();
-            });
-            $$('.calendar-custom-toolbar .right .link').on('click', function () {
-                calendarInline.nextMonth();
-            });
-        },
-        onMonthYearChangeStart: function (p) {
-            $$('.calendar-custom-toolbar .center').text(monthNames[p.currentMonth] +', ' + p.currentYear);
+    var user = firebase.auth().currentUser;
+
+
+    var id = user.uid
+    var docRef = db.collection("users").doc(id);
+
+    docRef.get().then(function(doc) {
+        if (doc.exists) {
+
+            //load data relevant to Admin
+            if(doc.data()["admin"]){ 
+                console.log("Admin Signed in")
+                document.getElementById('adminz').style.display = 'block';
+
+                var accepted_users=[];
+
+
+                $$('#generate').on('click', function(){
+                    new Promise(function(resolve) {
+                        resolve();
+                        accepted_users = sortUsers();
+                    }).then(function() {
+                        console.log(accepted_users);
+                    });
+                    
+                    
+                    new Promise(function(resolve) {
+                        resolve();
+                        assign();
+                    }).then(function() {
+                        //do something after dates assigned
+                    });
+                    
+                    
+                    
+
+
+
+                });
+            }
+
+            //load data relevant to Resident
+            else{
+                console.log("Resident Signed in")
+                document.getElementById('resident').style.display = 'block';
+
+                //This is all for the Calendar Page, it is on the Framework7 website
+                var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August' , 'September' , 'October', 'November', 'December'];
+
+                var calendarInline = myApp.calendar({
+                    container: '#calendar-inline-container',
+                    value: [new Date()],
+                    weekHeader: false,
+                    toolbarTemplate: 
+                    '<div class="toolbar calendar-custom-toolbar">' +
+                    '<div class="toolbar-inner">' +
+                    '<div class="left">' +
+                    '<a href="#" class="link icon-only"><i class="icon icon-back"></i></a>' +
+                    '</div>' +
+                    '<div class="center"></div>' +
+                    '<div class="right">' +
+                    '<a href="#" class="link icon-only"><i class="icon icon-forward"></i></a>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>',
+                    onOpen: function (p) {
+                        $$('.calendar-custom-toolbar .center').text(monthNames[p.currentMonth] +', ' + p.currentYear);
+                        $$('.calendar-custom-toolbar .left .link').on('click', function () {
+                            calendarInline.prevMonth();
+                        });
+                        $$('.calendar-custom-toolbar .right .link').on('click', function () {
+                            calendarInline.nextMonth();
+                        });
+                    },
+                    onMonthYearChangeStart: function (p) {
+                        $$('.calendar-custom-toolbar .center').text(monthNames[p.currentMonth] +', ' + p.currentYear);
+                    }
+                });
+
+            }
+
         }
+        else {
+            console.log("No such document!");
+        }}).catch(function(error) {
+        console.log("Error getting users for admin check:", error);
     });
+
+
+    function sortUsers(){
+        var arr =[];
+        var GIARef = db.collection("GIA_Applications");
+
+        GIARef.orderBy("availability")
+            .get()
+            .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                var id = doc.id;
+                arr.push(id);
+
+            });
+        })
+            .catch(function(error) {
+            //console.log("Error getting documents: ", error);
+        });
+        return arr;
+
+    }
+    
+    
+    
+    function assign(){
+        
+        
+    }
+    
+
 
 
 });
@@ -232,5 +462,60 @@ myApp.onPageInit('schedule', function (page) {
 myApp.onPageInit('addResident', function (page) {
     // Do something here for "Add Resident" page
     console.log("Add Resident");
+});
+
+myApp.onPageBeforeInit('GIAapplication', function (page) {
+    // Do something here for "Application" page
+    console.log("User Application");
+    console.log("Passed_id: " + passed_id);
+    var id = passed_id;
+    var name = passed_name;
+    var data ={};
+    document.getElementById("title").innerHTML = passed_name;
+
+    const docRef = db.collection("GIA_Applications").doc(id);
+
+
+    docRef.get().then(function(doc) {
+
+        if (doc.exists) {
+
+            data = doc.data();
+            console.log(doc.data());
+            myApp.formFromJSON('#their-form', data);
+            var GIA = "";
+            if (doc.data()["GIASelected1"] == "OA"){
+                console.log("OA");
+                GIA = "Office Aid"
+            }
+            else{
+                console.log("OA");
+                GIA = "Evening Receptionist"
+            }
+            document.getElementById("GIA").innerHTML = GIA;
+
+        } else {
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+
+
+
+    $$('#acceptButton').on('click', function(){
+        db.collection("GIA_Applications").doc(id).set({
+            accepted: true
+        }, { merge: true });
+    });
+
+    $$('#rejectButton').on('click', function(){
+        db.collection("GIA_Applications").doc(id).delete().then(function() {
+            console.log("Document successfully deleted!");
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
+        });
+    });
+
 
 });
