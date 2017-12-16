@@ -41,7 +41,7 @@ myApp.addView('.view-main',{
     dynamicNavbar: true
 });
 
-firebase.auth().onAuthStateChanged(function(user) { 
+firebase.auth().onAuthStateChanged(function(user) {
 
     // user is undefined if no user signed in
     if (user) {
@@ -54,10 +54,10 @@ firebase.auth().onAuthStateChanged(function(user) {
         var providerData = user.providerData;
         var admin = user.admin;
         console.log('User name: ' + displayName)
-        
+
         // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
-    console.log("Home is ready!"); 
+    console.log("Home is ready!");
     var user = firebase.auth().currentUser;
 
     if(user){
@@ -83,7 +83,7 @@ $$(document).on('deviceready', function() {
     docRef.get().then(function(doc) {
         if (doc.exists) {
             if(doc.data()["admin"]){
-                console.log("Admin Signed in")  
+                console.log("Admin Signed in")
                 document.getElementById('admin').style.display = 'block';
             }
             else{
@@ -138,7 +138,7 @@ $$(document).on('deviceready', function() {
         console.log('No User Signed in'); // No user is signed in.
     }
 
-}); 
+});
 
 
 
@@ -158,7 +158,7 @@ myApp.onPageBeforeInit('jobApp', function (page) {
         if (doc.exists) {
 
             //load data relevant to Admin
-            if(doc.data()["admin"]){ 
+            if(doc.data()["admin"]){
                 console.log("Admin Signed in")
                 document.getElementById('applications').style.display = 'inline';
                 var counter = 0
@@ -266,7 +266,7 @@ myApp.onPageBeforeInit('jobApp', function (page) {
                 });
 
                 $$('.end-button').on('click', function(){
-                    myApp.alert('Application period ended!', 'I-House') 
+                    myApp.alert('Application period ended!', 'I-House')
                     db.collection("settings").doc("GIA_Application").set({
                         GIA_Button: false
                     }).then(function() {
@@ -348,7 +348,7 @@ myApp.onPageInit('schedule', function (page) {
         if (doc.exists) {
 
             //load data relevant to Admin
-            if(doc.data()["admin"]){ 
+            if(doc.data()["admin"]){
                 console.log("Admin Signed in")
                 document.getElementById('adminz').style.display = 'block';
 
@@ -362,17 +362,17 @@ myApp.onPageInit('schedule', function (page) {
                     }).then(function() {
                         console.log(accepted_users);
                     });
-                    
-                    
+
+
                     new Promise(function(resolve) {
                         resolve();
                         assign();
                     }).then(function() {
                         //do something after dates assigned
                     });
-                    
-                    
-                    
+
+
+
 
 
 
@@ -391,7 +391,7 @@ myApp.onPageInit('schedule', function (page) {
                     container: '#calendar-inline-container',
                     value: [new Date()],
                     weekHeader: false,
-                    toolbarTemplate: 
+                    toolbarTemplate:
                     '<div class="toolbar calendar-custom-toolbar">' +
                     '<div class="toolbar-inner">' +
                     '<div class="left">' +
@@ -446,14 +446,14 @@ myApp.onPageInit('schedule', function (page) {
         return arr;
 
     }
-    
-    
-    
+
+
+
     function assign(){
-        
-        
+
+
     }
-    
+
 
 
 
@@ -462,6 +462,37 @@ myApp.onPageInit('schedule', function (page) {
 myApp.onPageInit('addResident', function (page) {
     // Do something here for "Add Resident" page
     console.log("Add Resident");
+    console.log( document.getElementById('isAdmin').checked);
+
+    $$('.res-submit').on('click', function(){
+        var email = document.getElementById('email').value;
+        var pass = document.getElementById('password').value;
+        var isAdmin = document.getElementById('isAdmin').checked;
+        var namee = document.getElementById('resName').value;
+
+        var secondaryApp = firebase.initializeApp(config, "Secondary");
+
+        //creating user
+        secondaryApp.auth().createUserWithEmailAndPassword(email, pass).then(function(firebaseUser) {
+          console.log("User " + firebaseUser.uid + " created successfully!");
+          var id = firebaseUser.uid;
+          db.collection("users").doc(id).set({
+            admin: isAdmin,
+            name: namee
+          }).then(function() {
+              console.log("Document successfully written");
+              myApp.alert('Resident added', 'I-House');
+          });
+
+          secondaryApp.auth().signOut();
+          secondaryApp.delete();
+        }).catch(function(error){
+          console.log(error.message);
+          myApp.alert('Sorry resident could not be added', 'I-House');
+          secondaryApp.delete();
+        });
+    });
+
 });
 
 myApp.onPageBeforeInit('GIAapplication', function (page) {
