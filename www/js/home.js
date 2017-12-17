@@ -41,7 +41,7 @@ myApp.addView('.view-main',{
     dynamicNavbar: true
 });
 
-firebase.auth().onAuthStateChanged(function(user) { 
+firebase.auth().onAuthStateChanged(function(user) {
 
     // user is undefined if no user signed in
     if (user) {
@@ -55,90 +55,99 @@ firebase.auth().onAuthStateChanged(function(user) {
         var admin = user.admin;
         console.log('User name: ' + displayName)
 
+
         // Handle Cordova Device Ready Event
         $$(document).on('deviceready', function() {
-            console.log("Home is ready!"); 
+            console.log("Home is ready!");
             var user = firebase.auth().currentUser;
 
-            if(user){
-                console.log("user is logged in")
 
-                //update Profile page
-                document.getElementById("name").innerHTML = user.displayName;
-                var img = document.createElement("img");
-                //img.src = user.photoURL;
-                //img.height = 250;
-                //img.width = 250;
-                //document.getElementById('pic').appendChild(img);
-            }
-            else{
-                console.log("NO user is logged in")
-            }
+            // Handle Cordova Device Ready Event
+            $$(document).on('deviceready', function() {
+                console.log("Home is ready!"); 
+                var user = firebase.auth().currentUser;
 
+                if(user){
+                    console.log("user is logged in")
 
-            var id = user.uid
-            var docRef = db.collection("users").doc(id);
-
-            //Checks user
-            docRef.get().then(function(doc) {
-                if (doc.exists) {
-                    if(doc.data()["admin"]){
-                        console.log("Admin Signed in")  
-                        document.getElementById('admin').style.display = 'block';
-                    }
-                    else{
-                        console.log("Resident Signed in")
-                        var docRef = db.collection("settings").doc("GIA_Application");
-
-                        docRef.get().then(function(doc) {
-                            if (doc.exists) {
-                                console.log("Document data:", doc.data());
-                                if(!doc.data()["GIA_Button"]){
-                                    console.log("GIA Button Disabled")
-                                    document.getElementById('GIA_App').style.display = 'none';
-                                }
-                                console.log("GIA Button Enabled")
-                            } else {
-                                console.log("No such document!");
-                            }
-                        }).catch(function(error) {
-                            console.log("Error getting GIA_Application:", error);
-                        });
-                    }
-
-
-                } else {
-                    console.log("No such user exists");
+                    //update Profile page
+                    document.getElementById("name").innerHTML = user.displayName;
+                    var img = document.createElement("img");
+                    //img.src = user.photoURL;
+                    //img.height = 250;
+                    //img.width = 250;
+                    //document.getElementById('pic').appendChild(img);
                 }
-            }).catch(function(error) {
-                console.log("Error getting users:", error);
-            });
+                else{
+                    console.log("NO user is logged in")
+                }
+
+
+                var id = user.uid
+                var docRef = db.collection("users").doc(id);
+
+
+                //Checks user
+                docRef.get().then(function(doc) {
+                    if (doc.exists) {
+                        if(doc.data()["admin"]){
+                            console.log("Admin Signed in")  
+                            document.getElementById('admin').style.display = 'block';
+                        }
+                        else{
+                            console.log("Resident Signed in")
+                            var docRef = db.collection("settings").doc("GIA_Application");
+
+
+                            docRef.get().then(function(doc) {
+                                if (doc.exists) {
+                                    console.log("Document data:", doc.data());
+                                    if(!doc.data()["GIA_Button"]){
+                                        console.log("GIA Button Disabled")
+                                        document.getElementById('GIA_App').style.display = 'none';
+                                    }
+                                    console.log("GIA Button Enabled")
+                                } else {
+                                    console.log("No such document!");
+                                }
+                            }).catch(function(error) {
+                                console.log("Error getting GIA_Application:", error);
+                            });
+                        }
+
+
+                    } else {
+                        console.log("No such user exists");
+                    }
+                }).catch(function(error) {
+                    console.log("Error getting users:", error);
+                });
 
 
 
 
-            $$('.sign-out').on('click', function(){
-                console.log('Signing Out');
-                firebase.auth().signOut()
-                    .then(function() {
-                    console.log('Signed-Out');
-                    location.href = "index.html";
-                })
-                    .catch(function(error) {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log('Sign-Out error: ', errorCode);
+                $$('.sign-out').on('click', function(){
+                    console.log('Signing Out');
+                    firebase.auth().signOut()
+                        .then(function() {
+                        console.log('Signed-Out');
+                        location.href = "index.html";
+                    })
+                        .catch(function(error) {
+                        var errorCode = error.code;
+                        var errorMessage = error.message;
+                        console.log('Sign-Out error: ', errorCode);
+                    });
+
                 });
 
             });
 
-        });
-
-    } else {
-        console.log('No User Signed in'); // No user is signed in.
+        } else {
+                        console.log('No User Signed in'); // No user is signed in.
     }
 
-}); 
+});
 
 // Now we need to run the code that will be executed only for jobApp page.
 myApp.onPageBeforeInit('jobApp', function (page) {
@@ -158,7 +167,7 @@ myApp.onPageBeforeInit('jobApp', function (page) {
         if (doc.exists) {
 
             //load data relevant to Admin
-            if(doc.data()["admin"]){ 
+            if(doc.data()["admin"]){
                 console.log("Admin Signed in")
                 document.getElementById('applications').style.display = 'inline';
 
@@ -266,7 +275,7 @@ myApp.onPageBeforeInit('jobApp', function (page) {
                 });
 
                 $$('.end-button').on('click', function(){
-                    myApp.alert('Application period ended!', 'I-House') 
+                    myApp.alert('Application period ended!', 'I-House')
                     db.collection("settings").doc("GIA_Application").set({
                         GIA_Button: false
                     }).then(function() {
@@ -401,7 +410,7 @@ myApp.onPageInit('schedule', function (page) {
         if (doc.exists) {
 
             //load data relevant to Admin
-            if(doc.data()["admin"]){ 
+            if(doc.data()["admin"]){
                 console.log("Admin Signed in")
                 document.getElementById('adminz').style.display = 'block';
 
@@ -445,7 +454,7 @@ myApp.onPageInit('schedule', function (page) {
                     container: '#calendar-inline-container',
                     value: [new Date()],
                     weekHeader: false,
-                    toolbarTemplate: 
+                    toolbarTemplate:
                     '<div class="toolbar calendar-custom-toolbar">' +
                     '<div class="toolbar-inner">' +
                     '<div class="left">' +
@@ -520,8 +529,6 @@ myApp.onPageInit('schedule', function (page) {
             //console.log("Error getting documents: ", error);
         });;
         return arr;
-
-
     }
 
 
@@ -532,6 +539,37 @@ myApp.onPageInit('schedule', function (page) {
 myApp.onPageInit('addResident', function (page) {
     // Do something here for "Add Resident" page
     console.log("Add Resident");
+    console.log( document.getElementById('isAdmin').checked);
+
+    $$('.res-submit').on('click', function(){
+        var email = document.getElementById('email').value;
+        var pass = document.getElementById('password').value;
+        var isAdmin = document.getElementById('isAdmin').checked;
+        var namee = document.getElementById('resName').value;
+
+        var secondaryApp = firebase.initializeApp(config, "Secondary");
+
+        //creating user
+        secondaryApp.auth().createUserWithEmailAndPassword(email, pass).then(function(firebaseUser) {
+            console.log("User " + firebaseUser.uid + " created successfully!");
+            var id = firebaseUser.uid;
+            db.collection("users").doc(id).set({
+                admin: isAdmin,
+                name: namee
+            }).then(function() {
+                console.log("Document successfully written");
+                myApp.alert('Resident added', 'I-House');
+            });
+
+            secondaryApp.auth().signOut();
+            secondaryApp.delete();
+        }).catch(function(error){
+            console.log(error.message);
+            myApp.alert('Sorry resident could not be added', 'I-House');
+            secondaryApp.delete();
+        });
+    });
+
 });
 
 myApp.onPageBeforeInit('GIAapplication', function (page) {
@@ -582,13 +620,13 @@ myApp.onPageBeforeInit('GIAapplication', function (page) {
         while (myNode.firstChild) {
             myNode.removeChild(myNode.firstChild);
         }
-        
+
         myNode = document.getElementById("accepted")
 
         while (myNode.firstChild) {
             myNode.removeChild(myNode.firstChild);
         }
-        
+
 
     });
 

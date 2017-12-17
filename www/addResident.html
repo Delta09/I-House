@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    
+
     <!-- Page, data-page contains page name-->
     <div class="page" data-page="addResident">
         <!-- Scrollable page content-->
@@ -29,7 +29,7 @@
                             <div class="item-inner">
                                 <div class="item-title label">Name</div>
                                 <div class="item-input">
-                                    <input type="text" placeholder="Your name">
+                                    <input id="resName" type="text" placeholder="Your name">
                                 </div>
                             </div>
                         </div>
@@ -40,12 +40,25 @@
                             <div class="item-inner">
                                 <div class="item-title label">E-mail</div>
                                 <div class="item-input">
-                                    <input type="email" placeholder="E-mail">
+                                    <input id="email" type="email" placeholder="E-mail">
                                 </div>
                             </div>
                         </div>
                     </li>
-                    
+
+                    <!-- Password -->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons">password</i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">Password</div>
+                                <div class="item-input">
+                                    <input id="password" type="password" name ="password1" placeholder="Password">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
                     <!-- Select -->
                     <li>
                         <div class="item-content">
@@ -81,7 +94,7 @@
                                 <div class="item-title label">Admin</div>
                                 <div class="item-input">
                                     <label class="label-switch">
-                                        <input type="checkbox">
+                                        <input id="isAdmin" type="checkbox">
                                         <div class="checkbox"></div>
                                     </label>
                                 </div>
@@ -89,6 +102,13 @@
                         </div>
                     </li>
                 </ul>
+                <div class="list-block">
+                    <ul>
+                        <li><a id="resSubmit" class="item-link list-button res-submit">Submit</a></li>
+                    </ul>
+                    <div class="list-block-label">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
